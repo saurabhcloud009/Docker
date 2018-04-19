@@ -1,29 +1,14 @@
 version: "3.1"
 
 services:
-  jenkins:
-    build:
-      context: .
-    image: saurabhpathak21/myjenkins:1.2
-    ports:
-     - "8086:8080"
-    depends_on:
-#     - sonar
-     - nexus
-#    links:
-#      - tomcat
-    volumes:
-     - /$HOME/data/jenkins:/var/jenkins_home
-    restart: always
-    
   tomcat:
     image: tomcat
     ports:
-      - "8080:8080"
+      - "8081:8080"
     links:
       - postgres
     volumes:
-     - /$HOME/data/tomcat:/usr/local/tomcat/webapps
+     - $HOME/data/tomcat:/usr/local/tomcat/webapps
     restart: always
 
 #  sonar:
@@ -42,12 +27,12 @@ services:
     links:
       - tomcat
     volumes:
-     - /$HOME/data/nexus-data:/nexus-data
+     - $HOME/data/nexus-data:/nexus-data
     restart: always
   postgres:
     image: postgres
     volumes:
-       - /$HOME/data/postgres:/data/postgres
+       - $HOME/data/postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
@@ -63,7 +48,7 @@ services:
      - postgres
     image: fenglc/pgadmin4
     volumes:
-      - /$HOME/data/pgadmin:/root/.pgadmin
+      - $HOME/data/pgadmin:/var/lib
     ports:
      - "5050:5050"
     networks:
