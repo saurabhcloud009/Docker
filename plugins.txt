@@ -119,9 +119,8 @@ pipeline-stage-step
 pipeline-stage-tags-metadata
 pipeline-stage-view
 plain-credentials
-promoted-builds
 promoted-builds-simple
-promoted-builds.bak
+promoted-builds
 publish-over
 publish-over-ssh
 pubsub-light
@@ -147,7 +146,6 @@ tracking-git
 unleash
 variant
 view-job-filters
-view-job-filters.jpi.disabled
 windows-slaves
 workflow-aggregator
 workflow-api

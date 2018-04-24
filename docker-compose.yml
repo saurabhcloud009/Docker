@@ -1,6 +1,15 @@
 version: "3.1"
 
 services:
+  jenkins:
+    build:
+     context: .
+    image: jenkins:1.0
+    ports:
+     - "8080:8080"
+    volumes:
+     - $HOME/data/jenkins:/var/jenkins_home 
+
   tomcat:
     image: tomcat
     ports:
@@ -13,7 +22,7 @@ services:
 
 #  sonar:
 #    image: sonarqube
-#    ports:
+#   ports:
 #     - "9000:9000"
 #    volumes:
 #     - /$HOME/data/sonar:/var/jenkins_home
@@ -58,3 +67,4 @@ services:
 networks:
   postgres:
     driver: bridge
+    

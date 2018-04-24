@@ -12,14 +12,12 @@ chmod -R 777 $HOME/data
 
 #update older jenkins image, make sure it doesnt use cache
 
-docker run -d -p 8080:8080  --name=jenkins  saurabhpathak21/myjenkins:1.2
-
 docker-compose up -d
 
 docker ps -a --filter=status=running  --format "{{.Names}}: {{.Ports}}"
 
 sleep 5m # Waits 5 minutes.
 
-cat $HOME/data/jenkins/secrets/initialAdminPassword > .JenkinsPassword
+#cat $HOME/data/jenkins/secrets/initialAdminPassword > .JenkinsPassword
 
 echo "NOTE: Please allow a couple of minutes for the  application to start."
